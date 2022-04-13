@@ -7,7 +7,7 @@ if TYPE_CHECKING:
 	from entity import Entity
 
 class Action:
-	def perform(self,engine,entity) -> None:
+	def perform(self,engine:'Engine',entity:'Entity') -> None:
 		""" Perform this action with the objects needed to determine its scope.
 
 		'engine' is the scope this action is bien performed in.
@@ -20,7 +20,7 @@ class Action:
 		raise NotImplementedError()
 
 class EscapeAction(Action):
-	def perform(self,engine,entity) -> None:
+	def perform(self,engine:'Engine',entity:'Entity') -> None:
 		raise SystemExit()
 
 class MovementAction(Action):
@@ -31,7 +31,7 @@ class MovementAction(Action):
 		self.dy=dy
 
 
-	def perform(self,engine,entity) -> None:
+	def perform(self,engine:'Engine',entity:'Entity') -> None:
 		dest_x=entity.x+self.dx
 		dest_y=entity.y+self.dy
 
